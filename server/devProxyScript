@@ -1,0 +1,7 @@
+#!/bin/bash
+# This script is created so we don't have to comipile the server.rkt file
+# for everys small change.  TODO delete this and add a build script 
+# to compile the server on the installation machine.
+
+racket /home/peter/Git/vscode-languageserver-racket/server/server.rkt
+# /home/peter/Git/vscode-languageserver-racket/server/fakeServer | tee racket_language_server_comms_log.txt
