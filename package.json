@@ -1,5 +1,5 @@
 {
-  "name": "racket-language-server",
+  "name": "code-racket",
   "description": "Server and client for VS Code Racket Language Server",
   "author": "Peter Roehlen",
   "license": "MIT",
