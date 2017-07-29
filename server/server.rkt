@@ -18,13 +18,27 @@
       (date->string (current-date) #t)      
       "\n"))
 
+(define (log-message message)
+  (log message)
+  (log "\n"))
+
+(define (handle-incoming-request message) 
+  (log "\nRequest:\n")
+  (log-message message)
+  (respond message))
+
+(define (handle-incoming-notification message) 
+  (log "\nNotification:\n")
+  (log-message message))
+
+(define (handle-incoming-message message) 
+  (if (hash-has-key? message 'id) 
+    (handle-incoming-request message)
+    (handle-incoming-notification message)))
 
 (define ( read-json-input )
-  (let ((request (read-json)))
-    (log "\nRequest:\n")
-    (log request)
-    (log "\n")
-    (respond request)
+  (let ((message (read-json)))
+    (handle-incoming-message message)
     (skip-to-json)))
 
 (define (skip-to-json)
